@@ -5,13 +5,15 @@ import {
   POKEMON_FAIL,
   POKEMON_SUCCESS,
 } from "./../action/PokemonActionTypes";
-interface initialStateT {
+export interface initialStateT {
   loading: boolean;
+  faile?: boolean;
   pokemon?: PokemonType;
 }
 
 const initialState: initialStateT = {
   loading: false,
+  faile: false,
 };
 
 const PokemonReducer = (
@@ -21,16 +23,21 @@ const PokemonReducer = (
   switch (action.type) {
     case POKEMON_LOADING:
       return {
+        ...state,
+        faile: false,
         loading: true,
       };
 
     case POKEMON_FAIL:
       return {
+        ...state,
         loading: false,
+        faile: true,
       };
 
     case POKEMON_SUCCESS:
       return {
+        ...state,
         loading: false,
         pokemon: action.payload,
       };

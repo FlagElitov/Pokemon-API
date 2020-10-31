@@ -1,6 +1,7 @@
 export const POKEMON_LOADING = "POKEMON_LOADING";
 export const POKEMON_FAIL = "POKEMON_FAIL";
 export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
+export const REQUEST_POKEMON = "REQUEST_POKEMON";
 
 export type PokemonType = {
   abilities: PokemonAbility[];
@@ -37,6 +38,9 @@ export interface PokemonSuccess {
     sprites: PokemonSprites;
     stats: PokemonStats[];
   };
+}
+export interface RequestPokemon {
+  type: typeof REQUEST_POKEMON;
 }
 
 export type PokemonDispatchTypes =
