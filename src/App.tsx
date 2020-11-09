@@ -2,7 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "./redux/redux-store";
 import "./App.css";
-import { REQUEST_POKEMON } from "./redux/action/PokemonActionTypes";
+import {
+  REQUEST_POKEMON,
+  POKEMON_LOADING,
+} from "./redux/action/PokemonActionTypes";
 import Loader from "./assest/loader";
 import { initialStateT } from "./redux/reducers/PokemonReducers";
 

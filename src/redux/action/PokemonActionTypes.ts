@@ -3,6 +3,17 @@ export const POKEMON_FAIL = "POKEMON_FAIL";
 export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
 export const REQUEST_POKEMON = "REQUEST_POKEMON";
 
+export const pokemonLoading = () => ({ type: POKEMON_LOADING });
+export const pokemonFail = () => ({ type: POKEMON_FAIL });
+export const pokemonSuccess = (payload: PokemonType) => ({
+  type: POKEMON_SUCCESS,
+  payload,
+});
+export const pokemonRequest = (payload: string) => ({
+  type: REQUEST_POKEMON,
+  payload,
+});
+
 export type PokemonType = {
   abilities: PokemonAbility[];
   sprites: PokemonSprites;
@@ -33,11 +44,7 @@ export interface PokemonFail {
 }
 export interface PokemonSuccess {
   type: typeof POKEMON_SUCCESS;
-  payload: {
-    abilities: PokemonAbility[];
-    sprites: PokemonSprites;
-    stats: PokemonStats[];
-  };
+  payload: PokemonType;
 }
 export interface RequestPokemon {
   type: typeof REQUEST_POKEMON;
