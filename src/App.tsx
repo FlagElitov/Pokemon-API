@@ -2,10 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "./redux/redux-store";
 import "./App.css";
-import {
-  REQUEST_POKEMON,
-  POKEMON_LOADING,
-} from "./redux/action/PokemonActionTypes";
+import { REQUEST_POKEMON } from "./redux/action/PokemonActionTypes";
 import Loader from "./assest/loader";
 import { initialStateT } from "./redux/reducers/PokemonReducers";
 
@@ -18,7 +15,9 @@ const App: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPokemonName(event.target.value);
-  const handleClick = () => dispatch({ type: REQUEST_POKEMON, pokemonName });
+  const handleClick = (even: React.KeyboardEvent) => {
+    if (even.key === "Enter") dispatch({ type: REQUEST_POKEMON, pokemonName });
+  };
   return (
     <div className="App">
       {pokemonState.faile && (
@@ -26,8 +25,7 @@ const App: React.FC = () => {
           Введите правильно запрос!
         </div>
       )}
-      <input type="text" onChange={handleChange} />
-      <button onClick={handleClick}>Search</button>
+      <input type="text" onKeyPress={handleClick} onChange={handleChange} />
       {pokemonState.loading && (
         <div>
           <Loader />
